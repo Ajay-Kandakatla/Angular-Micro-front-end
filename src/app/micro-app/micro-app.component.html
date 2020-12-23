@@ -1,4 +1,5 @@
-<div>
+<div id="micro-app">
+  <h1>Angular Todo List</h1>
   <button (click)="addTask()">Add Task</button>
   <ol>
     <li class="task" *ngFor="let task of taskList; let i = index">
@@ -12,7 +13,8 @@
         [value]="task.title"
         (blur)="onTaskBlur(i, $event)"
       />
-      <span (click)="removeTask(i)"> X </span>
+
+      <span class="delete" (click)="removeTask(i)"> X </span>
     </li>
   </ol>
 </div>
