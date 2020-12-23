@@ -1,0 +1,18 @@
+<div>
+  <button (click)="addTask()">Add Task</button>
+  <ol>
+    <li class="task" *ngFor="let task of taskList; let i = index">
+      <span *ngIf="!task.editable" (click)="editTask(i)">
+        {{ this.task.title }}
+      </span>
+
+      <input
+        type="text"
+        *ngIf="task.editable"
+        [value]="task.title"
+        (blur)="onTaskBlur(i, $event)"
+      />
+      <span (click)="removeTask(i)"> X </span>
+    </li>
+  </ol>
+</div>
