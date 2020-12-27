@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import { UserService } from './user.service';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 export class Task {
   title: any;
   editable: boolean;
@@ -16,7 +18,13 @@ export class Task {
 })
 export class MicroApp implements OnInit {
   title = 'Flight Booking App';
-  constructor() {}
+  users: any = [];
+
+  constructor(usrService: UserService) {
+    usrService.getUsers().subscribe((users) => {
+      this.users = users;
+    });
+  }
   ngOnInit(): void {}
   public taskList: Task[] = [
     { title: 'Breakfast', editable: false },
